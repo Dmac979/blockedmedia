@@ -1,590 +1,562 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOCKEDMEDIA | Luxury Magazine & Agency</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLOCKEDMEDIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        /* CSS Reset & Variables */
-        :root {
-            --color-bg: #ffffff;
-            --color-text: #000000;
-            --color-accent: #ff0000;
-            --font-main: 'Montserrat', sans-serif;
-            --spacing-unit: 1rem;
-            --container-max-width: 1400px;
-            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    .red-text {
+      color: #ff0000;
+    }
 
-        body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-        /* Typography */
-        h1, h2, h3 {
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-        }
+    .hero-title {
+      font-size: clamp(3rem, 12vw, 10rem);
+      font-weight: 800;
+      color: #ff0000;
+      letter-spacing: 0.1em;
+      margin-bottom: 30px;
+      animation: fadeInUp 1s ease-out;
+    }
 
-        h2 {
-            font-size: clamp(3rem, 5vw, 6rem);
-            color: var(--color-accent);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
+    .hero-tagline {
+      font-size: clamp(0.7rem, 2vw, 1rem);
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
 
-        p {
-            font-weight: 400;
-        }
+    .hero-coming {
+      font-size: clamp(0.8rem, 2vw, 1.2rem);
+      font-weight: 800;
+      color: #ff0000;
+      letter-spacing: 0.3em;
+      margin-bottom: 60px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+    /* Email Signup */
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 80px;
+      animation: fadeInUp 1s ease-out 0.6s both;
+      width: 100%;
+      max-width: 500px;
+    }
 
-        /* Utility Classes */
-        .container {
-            max-width: var(--container-max-width);
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+    .signup-form input[type="email"] {
+      width: 100%;
+      padding: 18px 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      border: 2px solid #000000;
+      background: transparent;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
 
-        .section-padding {
-            padding: 8rem 0;
-        }
+    .signup-form input[type="email"]:focus {
+      border-color: #ff0000;
+    }
 
-        .text-center {
-            text-align: center;
-        }
+    .signup-form input[type="email"]::placeholder {
+      color: #999;
+      letter-spacing: 0.1em;
+    }
 
-        /* Header / Built with Anycoder */
-        .top-bar {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            z-index: 100;
-        }
+    .signup-btn {
+      padding: 18px 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      background-color: #ff0000;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .anycoder-link {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #ccc;
-            transition: var(--transition-smooth);
-        }
+    .signup-btn:hover {
+      transform: scale(1.05);
+      background-color: #cc0000;
+    }
 
-        .anycoder-link:hover {
-            color: var(--color-accent);
-        }
+    .scroll-arrow {
+      animation: pulse 2s infinite, fadeInUp 1s ease-out 0.8s both;
+      cursor: pointer;
+    }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 2rem;
-        }
+    .scroll-arrow svg {
+      width: 40px;
+      height: 40px;
+      stroke: #ff0000;
+      transition: transform 0.3s ease;
+    }
 
-        .hero-title {
-            font-size: clamp(4rem, 15vw, 12rem);
-            color: var(--color-accent);
-            line-height: 0.9;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
-        }
+    .scroll-arrow:hover svg {
+      transform: translateY(5px);
+    }
 
-        .hero-tagline {
-            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
-            letter-spacing: 0.3em;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
-        }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-        .hero-coming {
-            color: var(--color-accent);
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            font-size: 0.9rem;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
-        }
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
 
-        /* Email Form */
-        .signup-form {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid var(--color-text);
-            padding-bottom: 5px;
-            width: 100%;
-            max-width: 400px;
-            opacity: 0;
-            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.9s;
-            margin-bottom: 4rem;
-        }
+    /* Sections Common */
+    .section {
+      padding: 120px 60px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
 
-        .signup-input {
-            border: none;
-            background: transparent;
-            width: 100%;
-            padding: 10px 0;
-            font-family: var(--font-main);
-            font-size: 1rem;
-            outline: none;
-        }
+    @media (max-width: 768px) {
+      .section {
+        padding: 80px 25px;
+      }
+    }
 
-        .signup-input::placeholder {
-            color: #999;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-        }
+    .section-title {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      color: #ff0000;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-        .signup-btn {
-            background: none;
-            border: none;
-            color: var(--color-accent);
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-family: var(--font-main);
-            letter-spacing: 0.1em;
-            transition: var(--transition-smooth);
-        }
+    .section-teaser {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-align: center;
+      margin-bottom: 80px;
+      color: #000;
+    }
 
-        .signup-btn:hover {
-            opacity: 0.7;
-        }
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      gap: 40px;
+    }
 
-        /* Scroll Down Arrow */
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            color: var(--color-accent);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-        }
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
 
-        /* Magazine Grid */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 4rem;
-            margin-bottom: 2rem;
-        }
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-        @media (min-width: 768px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    @media (max-width: 1200px) {
+      .grid-4, .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-        @media (min-width: 1024px) {
-            .grid-container {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+    @media (max-width: 600px) {
+      .grid-4, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
 
-        .card {
-            display: block;
-            cursor: pointer;
-            group: hover;
-        }
+    /* Magazine Cards */
+    .magazine-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
 
-        .card-image-wrap {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background-color: #f5f5f5;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
+    .magazine-card:hover {
+      transform: scale(1.02);
+    }
 
-        .card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: grayscale(100%);
-        }
+    .magazine-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 0px solid #ff0000;
+      transition: border-width 0.3s ease;
+      pointer-events: none;
+    }
 
-        .card:hover .card-image {
-            transform: scale(1.05);
-            filter: grayscale(0%);
-        }
+    .magazine-card:hover::after {
+      border-width: 3px;
+    }
 
-        .card:hover .card-image-wrap {
-            outline: 1px solid var(--color-accent);
-            outline-offset: 10px;
-        }
+    .magazine-card .placeholder-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #999;
+      text-transform: uppercase;
+    }
 
-        .card-meta {
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
+    /* Merch Cards */
+    .merch-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
 
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
+    .merch-card:hover {
+      transform: scale(1.02);
+    }
 
-        .section-teaser {
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin-top: 3rem;
-            opacity: 0.7;
-        }
+    .merch-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 0px solid #ff0000;
+      transition: border-width 0.3s ease;
+      pointer-events: none;
+    }
 
-        /* Merch Specific */
-        .merch-grid .card-image-wrap {
-            aspect-ratio: 1/1;
-        }
+    .merch-card:hover::after {
+      border-width: 3px;
+    }
 
-        /* Exclusive / Models Section */
-        .exclusive-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 2rem;
-        }
+    .merch-card .placeholder-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #999;
+      text-transform: uppercase;
+    }
 
-        @media (min-width: 768px) {
-            .exclusive-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 4rem;
-            }
-        }
+    .merch-card .product-name {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
 
-        @media (min-width: 1024px) {
-            .exclusive-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+    .merch-card .product-price {
+      margin-top: 5px;
+      font-size: 0.8rem;
+      color: #666;
+      letter-spacing: 0.1em;
+    }
 
-        .model-card {
-            text-align: center;
-        }
+    /* Exclusive / Model Cards */
+    .model-card {
+      text-align: center;
+      transition: transform 0.4s ease;
+    }
 
-        .model-image-wrap {
-            width: 100%;
-            aspect-ratio: 3/4;
-            background-color: #f5f5f5;
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-        }
+    .model-card:hover {
+      transform: scale(1.02);
+    }
 
-        .model-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-            filter: grayscale(100%) contrast(1.2);
-        }
+    .model-card .placeholder-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #999;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .model-card:hover .model-image {
-            transform: scale(1.03);
-            filter: grayscale(0%) contrast(1);
-        }
+    .model-card:hover .placeholder-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 3px solid #ff0000;
+    }
 
-        .model-name {
-            font-size: 1.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
+    .model-card .model-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
 
-        .model-bio {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .model-card .model-bio {
+      font-size: 0.85rem;
+      color: #666;
+      letter-spacing: 0.05em;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
 
-        .btn-subscribe {
-            display: inline-block;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            padding: 0.8rem 2rem;
-            font-size: 0.8rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: var(--transition-smooth);
-        }
+    .subscribe-btn {
+      display: inline-block;
+      padding: 14px 35px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      background-color: #ff0000;
+      color: #ffffff;
+      text-decoration: none;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .btn-subscribe:hover {
-            background-color: var(--color-accent);
-            color: var(--color-bg);
-        }
+    .subscribe-btn:hover {
+      transform: scale(1.05);
+      background-color: #cc0000;
+    }
 
-        /* Footer */
-        footer {
-            padding: 4rem 0;
-            border-top: 1px solid #eee;
-            margin-top: 4rem;
-        }
+    /* Footer */
+    .footer {
+      padding: 80px 20px;
+      text-align: center;
+    }
 
-        .footer-text {
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #999;
-        }
+    .footer-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #000;
+    }
 
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Reveal on Scroll Class */
-        .reveal {
-            position: relative;
-            transform: translateY(50px);
-            opacity: 0;
-            transition: 1s all ease;
-        }
-
-        .reveal.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-    </style>
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header / Branding Link -->
-    <header class="top-bar">
-        <a href="https://huggingface.co/spaces/akhaliq/anycoder" target="_blank" class="anycoder-link">Built with anycoder</a>
-    </header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="hero-title">BLOCKEDMEDIA</h1>
+    <p class="hero-tagline">MAGAZINE • MERCH • EXCLUSIVE</p>
+    <p class="hero-coming">COMING 2026</p>
+    
+    <form class="signup-form" onsubmit="handleSignup(event)">
+      <input type="email" placeholder="ENTER YOUR EMAIL" required>
+      <button type="submit" class="signup-btn">NOTIFY ME</button>
+    </form>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1 class="hero-title">BLOCKED</h1>
-        <p class="hero-tagline">MAGAZINE • MERCH • EXCLUSIVE</p>
-        <p class="hero-coming">COMING 2026</p>
+    <a href="#magazine" class="scroll-arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
+  </section>
 
-        <!-- Simple Signup -->
-        <form class="signup-form" onsubmit="event.preventDefault(); alert('You are on the list.');">
-            <input type="email" class="signup-input" placeholder="Join the waitlist" required>
-            <button type="submit" class="signup-btn">Join</button>
-        </form>
+  <!-- Magazine Section -->
+  <section id="magazine" class="section">
+    <h2 class="section-title fade-in">MAGAZINE</h2>
+    <p class="section-teaser fade-in">Limited issues. Exclusive features.</p>
+    
+    <div class="grid grid-4">
+      <div class="magazine-card fade-in">
+        <div class="placeholder-img">Issue 01</div>
+      </div>
+      <div class="magazine-card fade-in">
+        <div class="placeholder-img">Issue 02</div>
+      </div>
+      <div class="magazine-card fade-in">
+        <div class="placeholder-img">Issue 03</div>
+      </div>
+      <div class="magazine-card fade-in">
+        <div class="placeholder-img">Issue 04</div>
+      </div>
+      <div class="magazine-card fade-in">
+        <div class="placeholder-img">Issue 05</div>
+      </div>
+      <div class="magazine-card fade-in">
+        <div class="placeholder-img">Issue 06</div>
+      </div>
+    </div>
+  </section>
 
-        <div class="scroll-down" onclick="document.getElementById('magazine').scrollIntoView();">
-            <i class="fa-solid fa-arrow-down"></i>
-        </div>
-    </section>
+  <!-- Merch Section -->
+  <section id="merch" class="section">
+    <h2 class="section-title fade-in">MERCH</h2>
+    <p class="section-teaser fade-in">Drops coming soon.</p>
+    
+    <div class="grid grid-4">
+      <div class="merch-card fade-in">
+        <div class="placeholder-img">Hoodie</div>
+        <p class="product-name">BLOCKED HOODIE</p>
+        <p class="product-price">$185</p>
+      </div>
+      <div class="merch-card fade-in">
+        <div class="placeholder-img">Tee</div>
+        <p class="product-name">LOGO TEE</p>
+        <p class="product-price">$75</p>
+      </div>
+      <div class="merch-card fade-in">
+        <div class="placeholder-img">Hoodie</div>
+        <p class="product-name">OVERSIZED HOODIE</p>
+        <p class="product-price">$195</p>
+      </div>
+      <div class="merch-card fade-in">
+        <div class="placeholder-img">Cap</div>
+        <p class="product-name">BLOCKED CAP</p>
+        <p class="product-price">$55</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Magazine Section -->
-    <section id="magazine" class="section-padding">
-        <div class="container reveal">
-            <h2>MAGAZINE</h2>
-            
-            <div class="grid-container">
-                <!-- Issue 1 -->
-                <div class="card">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" alt="Magazine Cover 1" class="card-image">
-                    </div>
-                    <div class="card-meta">Issue 001</div>
-                    <div class="card-title">The Void</div>
-                </div>
+  <!-- Exclusive Section -->
+  <section id="exclusive" class="section">
+    <h2 class="section-title fade-in">EXCLUSIVE</h2>
+    <p class="section-teaser fade-in">Premium access. Curated talent.</p>
+    
+    <div class="grid grid-3">
+      <div class="model-card fade-in">
+        <div class="placeholder-img">Model</div>
+        <h3 class="model-name">ARIA NOIR</h3>
+        <p class="model-bio">International runway model. Paris & Milan.</p>
+        <a href="https://www.fanvue.com" target="_blank" rel="noopener" class="subscribe-btn">SUBSCRIBE</a>
+      </div>
+      <div class="model-card fade-in">
+        <div class="placeholder-img">Model</div>
+        <h3 class="model-name">JADE WEST</h3>
+        <p class="model-bio">Editorial specialist. Vogue featured.</p>
+        <a href="https://www.fanvue.com" target="_blank" rel="noopener" class="subscribe-btn">SUBSCRIBE</a>
+      </div>
+      <div class="model-card fade-in">
+        <div class="placeholder-img">Model</div>
+        <h3 class="model-name">LUNA VERA</h3>
+        <p class="model-bio">Luxury brand ambassador. Global campaigns.</p>
+        <a href="https://www.fanvue.com" target="_blank" rel="noopener" class="subscribe-btn">SUBSCRIBE</a>
+      </div>
+      <div class="model-card fade-in">
+        <div class="placeholder-img">Model</div>
+        <h3 class="model-name">NOVA SAINT</h3>
+        <p class="model-bio">Avant-garde artist. Creative director.</p>
+        <a href="https://www.fanvue.com" target="_blank" rel="noopener" class="subscribe-btn">SUBSCRIBE</a>
+      </div>
+      <div class="model-card fade-in">
+        <div class="placeholder-img">Model</div>
+        <h3 class="model-name">REI TANAKA</h3>
+        <p class="model-bio">Tokyo fashion icon. Street style curator.</p>
+        <a href="https://www.fanvue.com" target="_blank" rel="noopener" class="subscribe-btn">SUBSCRIBE</a>
+      </div>
+      <div class="model-card fade-in">
+        <div class="placeholder-img">Model</div>
+        <h3 class="model-name">ZARA COLE</h3>
+        <p class="model-bio">High fashion. Cover model. Exclusive.</p>
+        <a href="https://www.fanvue.com" target="_blank" rel="noopener" class="subscribe-btn">SUBSCRIBE</a>
+      </div>
+    </div>
+  </section>
 
-                <!-- Issue 2 -->
-                <div class="card">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1000&auto=format&fit=crop" alt="Magazine Cover 2" class="card-image">
-                    </div>
-                    <div class="card-meta">Issue 002</div>
-                    <div class="card-title">Silence</div>
-                </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer-text">© 2025 BLOCKEDMEDIA</p>
+  </footer>
 
-                <!-- Issue 3 -->
-                <div class="card">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop" alt="Magazine Cover 3" class="card-image">
-                    </div>
-                    <div class="card-meta">Issue 003</div>
-                    <div class="card-title">Redacted</div>
-                </div>
-            </div>
+  <script>
+    // Scroll Animation Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
 
-            <p class="text-center section-teaser">Limited issues. Exclusive features.</p>
-        </div>
-    </section>
-
-    <!-- Merch Section -->
-    <section id="merch" class="section-padding">
-        <div class="container reveal">
-            <h2>MERCH</h2>
-            
-            <div class="grid-container merch-grid">
-                <!-- Product 1 -->
-                <div class="card">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000&auto=format&fit=crop" alt="Hoodie" class="card-image">
-                    </div>
-                    <div class="card-meta">Apparel</div>
-                    <div class="card-title">Oversized Hoodie</div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="card">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="Tee" class="card-image">
-                    </div>
-                    <div class="card-meta">Apparel</div>
-                    <div class="card-title">Signature Tee</div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="card">
-                    <div class="card-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000&auto=format&fit=crop" alt="Accessory" class="card-image">
-                    </div>
-                    <div class="card-meta">Accessories</div>
-                    <div class="card-title">Tote Bag</div>
-                </div>
-            </div>
-
-            <p class="text-center section-teaser">Drops coming soon.</p>
-        </div>
-    </section>
-
-    <!-- Exclusive Section -->
-    <section id="exclusive" class="section-padding">
-        <div class="container reveal">
-            <h2>EXCLUSIVE</h2>
-            
-            <div class="exclusive-grid">
-                <!-- Model 1 -->
-                <div class="model-card">
-                    <div class="model-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1000&auto=format&fit=crop" alt="Model 1" class="model-image">
-                    </div>
-                    <div class="model-name">Aria</div>
-                    <p class="model-bio">Digital artist & muse based in Tokyo.</p>
-                    <a href="#" class="btn-subscribe">Subscribe</a>
-                </div>
-
-                <!-- Model 2 -->
-                <div class="model-card">
-                    <div class="model-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1000&auto=format&fit=crop" alt="Model 2" class="model-image">
-                    </div>
-                    <div class="model-name">Elena</div>
-                    <p class="model-bio">Fashion icon redefining minimalist luxury.</p>
-                    <a href="#" class="btn-subscribe">Subscribe</a>
-                </div>
-
-                <!-- Model 3 -->
-                <div class="model-card">
-                    <div class="model-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000&auto=format&fit=crop" alt="Model 3" class="model-image">
-                    </div>
-                    <div class="model-name">Sasha</div>
-                    <p class="model-bio">Creative director & runway specialist.</p>
-                    <a href="#" class="btn-subscribe">Subscribe</a>
-                </div>
-
-                <!-- Model 4 -->
-                <div class="model-card">
-                    <div class="model-image-wrap">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000&auto=format&fit=crop" alt="Model 4" class="model-image">
-                    </div>
-                    <div class="model-name">Kai</div>
-                    <p class="model-bio">Avant-garde stylist & influencer.</p>
-                    <a href="#" class="btn-subscribe">Subscribe</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p class="footer-text">&copy; 2025 BLOCKED Media. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Scroll Reveal Animation
-        window.addEventListener('scroll', reveal);
-
-        function reveal() {
-            var reveals = document.querySelectorAll('.reveal');
-
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 150;
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                } else {
-                    reveals[i].classList.remove('active');
-                }
-            }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
+      });
+    }, observerOptions);
 
-        // Trigger reveal on load for elements already in view (if any)
-        reveal();
-    </script>
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Email Signup Handler
+    function handleSignup(event) {
+      event.preventDefault();
+      const email = event.target.querySelector('input[type="email"]').value;
+      
+      // Placeholder for Mailchimp or other integration
+      alert('Thank you! ' + email + ' has been added to our list.');
+      event.target.reset();
+    }
+
+    // Smooth scroll for arrow
+    document.querySelector('.scroll-arrow').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('#magazine').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
 </body>
 </html>

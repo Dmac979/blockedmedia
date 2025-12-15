@@ -1,0 +1,398 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.app {
+  width: 100%;
+}
+
+.red-text {
+  color: #ff0000;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 800;
+  color: #ff0000;
+  letter-spacing: 0.1em;
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-tagline {
+  font-size: clamp(0.7rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-coming {
+  font-size: clamp(0.8rem, 2vw, 1.2rem);
+  font-weight: 800;
+  color: #ff0000;
+  letter-spacing: 0.3em;
+  margin-bottom: 60px;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* Email Signup */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 80px;
+  animation: fadeInUp 1s ease-out 0.6s both;
+  width: 100%;
+  max-width: 500px;
+}
+
+.signup-form input[type="email"] {
+  width: 100%;
+  padding: 18px 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  border: 2px solid #000000;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.signup-form input[type="email"]:focus {
+  border-color: #ff0000;
+}
+
+.signup-form input[type="email"]::placeholder {
+  color: #999;
+  letter-spacing: 0.1em;
+}
+
+.signup-btn {
+  padding: 18px 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+  transform: scale(1.05);
+  background-color: #cc0000;
+}
+
+.scroll-arrow {
+  animation: pulse 2s infinite, fadeInUp 1s ease-out 0.8s both;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.scroll-arrow svg {
+  width: 40px;
+  height: 40px;
+  stroke: #ff0000;
+  transition: transform 0.3s ease;
+}
+
+.scroll-arrow:hover svg {
+  transform: translateY(5px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Sections Common */
+.section {
+  padding: 120px 60px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 25px;
+  }
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  color: #ff0000;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section-teaser {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 80px;
+  color: #000;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  gap: 40px;
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .grid-4, .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-4, .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Magazine Cards */
+.magazine-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.magazine-card:hover {
+  transform: scale(1.02);
+}
+
+.magazine-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 0px solid #ff0000;
+  transition: border-width 0.3s ease;
+  pointer-events: none;
+}
+
+.magazine-card:hover::after {
+  border-width: 3px;
+}
+
+.magazine-card .placeholder-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #999;
+  text-transform: uppercase;
+}
+
+/* Merch Cards */
+.merch-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+.merch-card:hover {
+  transform: scale(1.02);
+}
+
+.merch-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  border: 0px solid #ff0000;
+  transition: border-width 0.3s ease;
+  pointer-events: none;
+  aspect-ratio: 1/1;
+}
+
+.merch-card:hover::after {
+  border-width: 3px;
+}
+
+.merch-card .placeholder-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #999;
+  text-transform: uppercase;
+}
+
+.merch-card .product-name {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.merch-card .product-price {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: #666;
+  letter-spacing: 0.1em;
+}
+
+/* Exclusive / Model Cards */
+.model-card {
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.model-card:hover {
+  transform: scale(1.02);
+}
+
+.model-card .placeholder-img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #999;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.model-card:hover .placeholder-img {
+  box-shadow: inset 0 0 0 3px #ff0000;
+}
+
+.model-card .model-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.model-card .model-bio {
+  font-size: 0.85rem;
+  color: #666;
+  letter-spacing: 0.05em;
+  margin-bottom: 25px;
+  line-height: 1.8;
+}
+
+.subscribe-btn {
+  display: inline-block;
+  padding: 14px 35px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  background-color: #ff0000;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.subscribe-btn:hover {
+  transform: scale(1.05);
+  background-color: #cc0000;
+}
+
+/* Footer */
+.footer {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #000;
+}
+
+/* Scroll Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
