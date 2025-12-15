@@ -155,7 +155,7 @@ const ModelCard: React.FC<{ name: string; bio: string }> = ({ name, bio }) => (
 // Exclusive Section
 const ExclusiveSection: React.FC = () => {
   const models = [
-    { name: 'ARIA NOIR', bio: 'International runway model. Paris & Milan.' },
+    { name: 'Vixen Vale', bio: 'International runway model. Paris & Milan.' },
     { name: 'JADE WEST', bio: 'Editorial specialist. Vogue featured.' },
     { name: 'LUNA VERA', bio: 'Luxury brand ambassador. Global campaigns.' },
     { name: 'NOVA SAINT', bio: 'Avant-garde artist. Creative director.' },
