@@ -1,20 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BLOCKED</title>
-  <style>
-    body { margin:0; background:#000; color:#fff; font-family:Montserrat,sans-serif; text-align:center; }
-    h1 { font-size:8vw; margin-top:30vh; }
-    p { font-size:3vw; }
-    .red { color:#ff0000; }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOCKED | Luxury Magazine & Agency</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #000000;
+            --color-accent: #ff0000;
+            --font-main: 'Montserrat', sans-serif;
+            --spacing-unit: 1rem;
+            --container-max-width: 1400px;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(3rem, 5vw, 6rem);
+            color: var(--color-accent);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        p {
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 8rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header / Built with Anycoder */
+        .top-bar {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .anycoder-link {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #ccc;
+            transition: var(--transition-smooth);
+        }
+
+        .anycoder-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-size: clamp(4rem, 15vw, 12rem);
+            color: var(--color-accent);
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+        }
+
+        .hero-tagline {
+            font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+        }
+
+        .hero-coming {
+            color: var(--color-accent);
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
+        }
+
+        /* Email Form */
+        .signup-form {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--color-text);
+            padding-bottom: 5px;
+            width: 100%;
+            max-width: 400px;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.9s;
+            margin-bottom: 4rem;
+        }
+
+        .signup-input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 10px 0;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .signup-input::placeholder {
+            color: #999;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .signup-btn {
+            background: none;
+            border: none;
+            color: var(--color-accent);
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: var(--font-main);
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+        }
+
+        .signup-btn:hover {
+            opacity: 0.7;
+        }
+
+        /* Scroll Down Arrow */
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            color: var(--color-accent);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        /* Magazine Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            display: block;
+            cursor: pointer;
+            group: hover;
+        }
+
+        .card-image-wrap {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: #f5f5f5;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(100%);
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .card:hover .card-image-wrap {
+            outline: 1px solid var(--color-accent);
+            outline-offset: 10px;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .section-teaser {
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 3rem;
+            opacity: 0.7;
+        }
+
+        /* Merch Specific */
+        .merch-grid .card-image-wrap {
+            aspect-ratio: 1/1;
+        }
+
+        /* Exclusive / Models Section */
+        .exclusive-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .exclusive-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .exclusive-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .model-card {
+            text-align: center;
+        }
+
+        .model-image-wrap {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: #f5f5f5;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .model-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        .model-card:hover .model-image {
+            transform: scale(1.03);
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .model-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .model-bio {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-subscribe {
+            display: inline-block;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            padding: 0.8rem 2rem;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-subscribe:hover {
+            background-color: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid #eee;
+            margin-top: 4rem;
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Reveal on Scroll Class */
+        .reveal {
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+    </style>
 </head>
 <body>
-  <h1>BLOCKED</h1>
-  <p>Magazine • Merch • Exclusive</p>
-  <p class="red">Coming 2026</p>
+
+    <!-- Header / Branding Link -->
+    <header class="top-bar">
+        <a href="https://huggingface.co/spaces/akhaliq/anycoder" target="_blank" class="anycoder-link">Built with anycoder</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">BLOCKED</h1>
+        <p class="hero-tagline">MAGAZINE • MERCH • EXCLUSIVE</p>
+        <p class="hero-coming">COMING 2026</p>
+
+        <!-- Simple Signup -->
+        <form class="signup-form" onsubmit="event.preventDefault(); alert('You are on the list.');">
+            <input type="email" class="signup-input" placeholder="Join the waitlist" required>
+            <button type="submit" class="signup-btn">Join</button>
+        </form>
+
+        <div class="scroll-down" onclick="document.getElementById('magazine').scrollIntoView();">
+            <i class="fa-solid fa-arrow-down"></i>
+        </div>
+    </section>
+
+    <!-- Magazine Section -->
+    <section id="magazine" class="section-padding">
+        <div class="container reveal">
+            <h2>MAGAZINE</h2>
+            
+            <div class="grid-container">
+                <!-- Issue 1 -->
+                <div class="card">
+                    <div class="card-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" alt="Magazine Cover 1" class="card-image">
+                    </div>
+                    <div class="card-meta">Issue 001</div>
+                    <div class="card-title">The Void</div>
+                </div>
+
+                <!-- Issue 2 -->
+                <div class="card">
+                    <div class="card-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1000&auto=format&fit=crop" alt="Magazine Cover 2" class="card-image">
+                    </div>
+                    <div class="card-meta">Issue 002</div>
+                    <div class="card-title">Silence</div>
+                </div>
+
+                <!-- Issue 3 -->
+                <div class="card">
+                    <div class="card-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop" alt="Magazine Cover 3" class="card-image">
+                    </div>
+                    <div class="card-meta">Issue 003</div>
+                    <div class="card-title">Redacted</div>
+                </div>
+            </div>
+
+            <p class="text-center section-teaser">Limited issues. Exclusive features.</p>
+        </div>
+    </section>
+
+    <!-- Merch Section -->
+    <section id="merch" class="section-padding">
+        <div class="container reveal">
+            <h2>MERCH</h2>
+            
+            <div class="grid-container merch-grid">
+                <!-- Product 1 -->
+                <div class="card">
+                    <div class="card-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1000&auto=format&fit=crop" alt="Hoodie" class="card-image">
+                    </div>
+                    <div class="card-meta">Apparel</div>
+                    <div class="card-title">Oversized Hoodie</div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="card">
+                    <div class="card-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1000&auto=format&fit=crop" alt="Tee" class="card-image">
+                    </div>
+                    <div class="card-meta">Apparel</div>
+                    <div class="card-title">Signature Tee</div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="card">
+                    <div class="card-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1000&auto=format&fit=crop" alt="Accessory" class="card-image">
+                    </div>
+                    <div class="card-meta">Accessories</div>
+                    <div class="card-title">Tote Bag</div>
+                </div>
+            </div>
+
+            <p class="text-center section-teaser">Drops coming soon.</p>
+        </div>
+    </section>
+
+    <!-- Exclusive Section -->
+    <section id="exclusive" class="section-padding">
+        <div class="container reveal">
+            <h2>EXCLUSIVE</h2>
+            
+            <div class="exclusive-grid">
+                <!-- Model 1 -->
+                <div class="model-card">
+                    <div class="model-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1000&auto=format&fit=crop" alt="Model 1" class="model-image">
+                    </div>
+                    <div class="model-name">Aria</div>
+                    <p class="model-bio">Digital artist & muse based in Tokyo.</p>
+                    <a href="#" class="btn-subscribe">Subscribe</a>
+                </div>
+
+                <!-- Model 2 -->
+                <div class="model-card">
+                    <div class="model-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?q=80&w=1000&auto=format&fit=crop" alt="Model 2" class="model-image">
+                    </div>
+                    <div class="model-name">Elena</div>
+                    <p class="model-bio">Fashion icon redefining minimalist luxury.</p>
+                    <a href="#" class="btn-subscribe">Subscribe</a>
+                </div>
+
+                <!-- Model 3 -->
+                <div class="model-card">
+                    <div class="model-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000&auto=format&fit=crop" alt="Model 3" class="model-image">
+                    </div>
+                    <div class="model-name">Sasha</div>
+                    <p class="model-bio">Creative director & runway specialist.</p>
+                    <a href="#" class="btn-subscribe">Subscribe</a>
+                </div>
+
+                <!-- Model 4 -->
+                <div class="model-card">
+                    <div class="model-image-wrap">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1000&auto=format&fit=crop" alt="Model 4" class="model-image">
+                    </div>
+                    <div class="model-name">Kai</div>
+                    <p class="model-bio">Avant-garde stylist & influencer.</p>
+                    <a href="#" class="btn-subscribe">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p class="footer-text">&copy; 2025 BLOCKED Media. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+
+        // Trigger reveal on load for elements already in view (if any)
+        reveal();
+    </script>
 </body>
 </html>
