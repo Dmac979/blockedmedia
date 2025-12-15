@@ -32,8 +32,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>BLOCKED | Luxury Magazine & Agency</title>
-        <meta name="description" content="BLOCKED - Luxury Fashion Magazine, Merch Brand, and Exclusive Agency. Coming 2026." />
+        <title>BLOCKEDMEDIA | Luxury Magazine & Agency</title>
+        <meta name="description" content="BLOCKEDMEDIA - Luxury Fashion Magazine, Merch Brand, and Exclusive Agency. Coming 2026." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
