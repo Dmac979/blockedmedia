@@ -5,37 +5,37 @@ const magazines = [
     id: 1,
     image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop',
     meta: 'Issue 001',
-    title: 'The Void',
+    title: 'Obsession',
   },
   {
     id: 2,
     image: 'https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?q=80&w=1000&auto=format&fit=crop',
     meta: 'Issue 002',
-    title: 'Silence',
+    title: 'Tease',
   },
   {
     id: 3,
     image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1000&auto=format&fit=crop',
     meta: 'Issue 003',
-    title: 'Redacted',
+    title: 'Denied',
   },
   {
     id: 4,
     image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1000&auto=format&fit=crop',
     meta: 'Issue 004',
-    title: 'Obscured',
+    title: 'Luxe',
   },
   {
     id: 5,
     image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1000&auto=format&fit=crop',
     meta: 'Issue 005',
-    title: 'Censored',
+    title: 'Velvet',
   },
   {
     id: 6,
     image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1000&auto=format&fit=crop',
     meta: 'Issue 006',
-    title: 'Hidden',
+    title: ' Neon',
   },
 ];
 
