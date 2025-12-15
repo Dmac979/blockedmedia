@@ -4,8 +4,8 @@ const models = [
   {
     id: 1,
     image: 'https://693fa9f99de40f1c26a1fb1a.imgix.net/fdbeea9f93c90b4a6225c01d4054e8c0b5bc2149a7d1f3d26026c30e3db3d018.png=80&w=1000&auto=format&fit=crop',
-    name: 'Aria',
-    bio: 'Digital artist & muse based in Tokyo.',
+    name: 'Vixen Vale',
+    bio: 'Bratty, In charge, ALWAYS',
   },
   {
     id: 2,
